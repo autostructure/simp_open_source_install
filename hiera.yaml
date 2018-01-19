@@ -1,0 +1,32 @@
+---
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+hierarchy:
+  - name: "Node-level"
+    path: "hosts/%{trusted.certname}"
+  - name: "Node-level by fqdn"
+    path: "hosts/%{facts.fqdn}"
+  - name: "Node-level by hostname"
+    path: "hosts/%{facts.hostname}"
+  - name: "Node-level by domain"
+    path: "domains/%{facts.domain}"
+  - name: "OS family"
+    path: "%{facts.os.family}"
+  - name: "OS release (full)"
+    path: "%{facts.os.name}/%{facts.os.release.full}"
+  - name: "OS release (major)"
+    path: "%{facts.os.name}/%{facts.os.release.major}"
+  - name: "OS"
+    path: "%{facts.os.name}"
+  - name: "hostgroup"
+    path: "hostgroups/%{::hostgroup}"
+  - name: "Default"
+    path: "default"
+  - name: "Compliance profiles"
+    path: "compliance_profiles/%{::compliance_profile}"
+  - name: "SIMP config settings"
+    path: "simp_config_settings"
+  - name: "SIMP Scenarios"
+    path: "scenarios/%{::simp_scenario}"
